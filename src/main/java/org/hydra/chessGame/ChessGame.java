@@ -360,7 +360,7 @@ public class ChessGame {
       isWhiteTurn ? PieceColor.WHITE : PieceColor.BLACK
     );
 
-    System.out.println("king Position :::" ,kingPosition.getRow() +" "+ kingPosition.getColumn());
+//    System.out.println("king Position :::" ,kingPosition.getRow() +" "+ kingPosition.getColumn());
 
     // Piece[][] tempBoard = board.getBoard();
 
