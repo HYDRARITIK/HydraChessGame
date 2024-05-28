@@ -20,7 +20,7 @@ public class Pawn extends Piece {
 
     int x = curr.getRow();
     int y = curr.getColumn();
-    System.out.println("Pawn row->" + x + "---col--" + y);
+    // System.out.println("Pawn row->" + x + "---col--" + y);
     List<Position> possibleMoves;
 
     if (this.getColor() == PieceColor.WHITE) {
@@ -87,6 +87,12 @@ public class Pawn extends Piece {
         if (board[newPosition.getRow()][newPosition.getColumn()] != null) {
           return false;
         }
+        //check whether any piece is present at the intermediate position
+
+          if (board[newPosition.getRow() + 1][newPosition.getColumn()] != null) {
+              return false;
+          }
+
         return true;
       } else if (
         row_diff == -1 &&
@@ -109,6 +115,13 @@ public class Pawn extends Piece {
         if (board[newPosition.getRow()][newPosition.getColumn()] != null) {
           return false;
         }
+        //check whether any piece is present at the intermediate position
+
+          if (board[newPosition.getRow() - 1][newPosition.getColumn()] != null) {
+              return false;
+          }
+
+
         return true;
       } else if (
         row_diff == 1 &&

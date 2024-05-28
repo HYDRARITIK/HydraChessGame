@@ -16,6 +16,27 @@ public class King extends Piece {
     super(color, position);
   }
 
+  private boolean isLeftCastle = false;
+  private boolean isRightCastle = false;
+
+  public boolean isLeftCastle() {
+    return isLeftCastle;
+  }
+
+  public boolean isRightCastle() {
+    return isRightCastle;
+  }
+
+  public void setLeftCastle(boolean leftCastle) {
+    isLeftCastle = leftCastle;
+  }
+
+  
+
+  public void setRightCastle(boolean rightCastle) {
+    isRightCastle = rightCastle;
+  }
+
   @Override
   public List<Position> allPossibleMoves(Position curr , Piece[][] board) {
     // king move in any direction by 1 step
@@ -30,7 +51,10 @@ public class King extends Piece {
             new Position(x, y + 1),
             new Position(x + 1, y - 1),
             new Position(x + 1, y),
-            new Position(x + 1, y + 1)
+        new Position(x + 1, y + 1)
+            ,
+            new Position(x, y + 2),
+            new Position(x, y - 2)
     ));
 
     List<Position> copyMoves = List.copyOf(possibleMoves);
@@ -62,6 +86,22 @@ public class King extends Piece {
     if (abs(row_diff) <= 1 && abs(col_diff) <= 1) {
       return true;
     }
+
+    //castling
+
+    if (isLeftCastle) {
+      if (row_diff == 0 && col_diff == -2 && newPosition.getColumn() == 2) {
+        return true;
+      }
+    }
+    
+    if (isRightCastle) {
+      if (row_diff == 0 && col_diff == 2 && newPosition.getColumn() == 6) {
+        return true;
+      }
+    }
+
+
 
     return false;
   }

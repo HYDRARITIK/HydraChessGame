@@ -38,9 +38,9 @@ public class ChessBoard {
       for (int j = 0; j < 8; j++) {
         Piece piece = board[i][j];
         if(piece==null)continue;
-        System.out.println("Piece at " + i + ", " + j + " is " + piece.getColor());
+        // System.out.println("Piece at " + i + ", " + j + " is " + piece.getColor());
       }
-      System.out.println();
+      // System.out.println();
     }
   }
 

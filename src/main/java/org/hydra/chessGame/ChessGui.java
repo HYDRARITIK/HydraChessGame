@@ -51,7 +51,7 @@ private String IconDir = "src/main/java/org/hydra/chessGame/Icons/";
     chessBoard = new component[8][8];
 
     setTitle("Chess Game");
-    setSize(800, 800);
+    setSize(700, 700);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLayout(new java.awt.GridLayout(8, 8));
     for (int i = 0; i < 8; i++) {
@@ -60,24 +60,27 @@ private String IconDir = "src/main/java/org/hydra/chessGame/Icons/";
         // add(chessBoard[i][j]);
         component c = new component(i, j);
         c.addMouseListener(
-          new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("row->"+c.getRow() + "---col--"+c.getCol());
+            new MouseAdapter() {
+              @Override
+              public void mouseClicked(MouseEvent e) {
+                // System.out.println("row->" + c.getRow() + "---col--" + c.getCol());
                 try {
-                    handleSquareCLick(c.getRow(), c.getCol());
+                  handleSquareCLick(c.getRow(), c.getCol());
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                  throw new RuntimeException(ex);
                 }
-            }
-          }
-        );
+              }
+            });
 
         chessBoard[i][j] = c;
 
         add(c);
+
       }
+
     }
+
+
 
 //    chessBoard[0][0].setIcon(
 //        new ImageIcon("src/main/resources/Icons/pawn.jpg")
@@ -117,7 +120,7 @@ private String IconDir = "src/main/java/org/hydra/chessGame/Icons/";
   public void handleSquareCLick(int r, int c) throws IOException {
     Color initialColor=chessBoard[r][c].getBackground();
       resetBackGround();
-      System.out.println("row->"+r + "---col--"+c);
+      // System.out.println("row->"+r + "---col--"+c);
       List<Position> LegalMoves = chessGame.higlightLegalMoves(r, c,initialColor);
       //color the legal moves with green color
 
